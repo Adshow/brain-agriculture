@@ -33,7 +33,7 @@ Além do CRUD completo dessas entidades, o sistema gera **relatórios** com esta
 
 ### 1. Clone o repositório
 ```bash
-git clone https://github.com/seu-repo/brain-agriculture.git
+git clone https://github.com/Adshow/brain-agriculture.git
 cd brain-agricultura
 ```
 ###  2. Subir os containers
