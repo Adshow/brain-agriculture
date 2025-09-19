@@ -1,0 +1,508 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/produtores": {
+      "post": {
+        "operationId": "ProdutoresController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProdutorDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Produtor criado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Produtor"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "produtores"
+        ]
+      }
+    },
+    "/produtores/{id}": {
+      "put": {
+        "operationId": "ProdutoresController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "ID do produtor",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProdutorDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Produtor atualizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Produtor"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Produtor não encontrado"
+          }
+        },
+        "tags": [
+          "produtores"
+        ]
+      },
+      "delete": {
+        "operationId": "ProdutoresController_delete",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "ID do produtor",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Produtor deletado com sucesso"
+          },
+          "404": {
+            "description": "Produtor não encontrado"
+          }
+        },
+        "tags": [
+          "produtores"
+        ]
+      },
+      "get": {
+        "operationId": "ProdutoresController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "ID do produtor",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Produtor encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Produtor"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Produtor não encontrado"
+          }
+        },
+        "tags": [
+          "produtores"
+        ]
+      }
+    },
+    "/safras/{safraId}/culturas": {
+      "post": {
+        "operationId": "CulturasController_add",
+        "parameters": [
+          {
+            "name": "safraId",
+            "required": true,
+            "in": "path",
+            "description": "ID da safra onde as culturas serão adicionadas",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddCulturasDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Culturas adicionadas com sucesso à safra",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Cultura"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "culturas"
+        ]
+      }
+    },
+    "/propriedades": {
+      "post": {
+        "operationId": "PropriedadesController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePropriedadeDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Propriedade criada com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Propriedade"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "propriedades"
+        ]
+      }
+    },
+    "/safras": {
+      "post": {
+        "operationId": "SafrasController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSafraDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Safra criada com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Safra"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "safras"
+        ]
+      },
+      "get": {
+        "operationId": "SafrasController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Lista de todas as safras",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Safra"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "safras"
+        ]
+      }
+    },
+    "/safras/{id}": {
+      "get": {
+        "operationId": "SafrasController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "ID da safra",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Safra encontrada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Safra"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Safra não encontrada"
+          }
+        },
+        "tags": [
+          "safras"
+        ]
+      }
+    },
+    "/dashboard/relatorio": {
+      "get": {
+        "operationId": "DashboardController_gerarRelatorio",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Relatório em PDF gerado com sucesso",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "dashboard"
+        ]
+      }
+    },
+    "/api-docs/yaml": {
+      "get": {
+        "operationId": "ApiDocsController_getYaml",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "ApiDocs"
+        ]
+      }
+    },
+    "/api-docs/json": {
+      "get": {
+        "operationId": "ApiDocsController_getJson",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "ApiDocs"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Minha API",
+    "description": "Documentação da API",
+    "version": "1.0.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "CreateProdutorDto": {
+        "type": "object",
+        "properties": {
+          "documento": {
+            "type": "string",
+            "example": "12345678900",
+            "description": "CPF ou CNPJ do produtor"
+          },
+          "nome": {
+            "type": "string",
+            "example": "João Silva",
+            "description": "Nome do produtor"
+          }
+        },
+        "required": [
+          "documento",
+          "nome"
+        ]
+      },
+      "Produtor": {
+        "type": "object",
+        "properties": {}
+      },
+      "UpdateProdutorDto": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "example": "João Silva Atualizado",
+            "description": "Nome do produtor"
+          },
+          "cpfCnpj": {
+            "type": "string",
+            "example": "98765432100",
+            "description": "Novo CPF/CNPJ do produtor"
+          }
+        }
+      },
+      "AddCulturasDto": {
+        "type": "object",
+        "properties": {
+          "culturas": {
+            "example": [
+              "Soja",
+              "Milho"
+            ],
+            "description": "Lista de culturas a serem adicionadas na safra",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "culturas"
+        ]
+      },
+      "Cultura": {
+        "type": "object",
+        "properties": {}
+      },
+      "CreatePropriedadeDto": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "example": "Fazenda Boa Vista",
+            "description": "Nome da propriedade"
+          },
+          "cidade": {
+            "type": "string",
+            "example": "Luís Eduardo Magalhães",
+            "description": "Cidade onde está localizada a propriedade"
+          },
+          "estado": {
+            "type": "string",
+            "example": "Bahia",
+            "description": "Estado da propriedade"
+          },
+          "areaTotal": {
+            "type": "number",
+            "example": 150,
+            "description": "Área total da propriedade em hectares"
+          },
+          "areaAgricultavel": {
+            "type": "number",
+            "example": 120,
+            "description": "Área agricultável da propriedade em hectares"
+          },
+          "areaVegetacao": {
+            "type": "number",
+            "example": 30,
+            "description": "Área de vegetação da propriedade em hectares"
+          },
+          "produtorId": {
+            "type": "string",
+            "example": "a8eb2f5c-24a9-459a-8c34-0d618efdb418",
+            "description": "ID do produtor dono da propriedade"
+          }
+        },
+        "required": [
+          "nome",
+          "cidade",
+          "estado",
+          "areaTotal",
+          "areaAgricultavel",
+          "areaVegetacao",
+          "produtorId"
+        ]
+      },
+      "Propriedade": {
+        "type": "object",
+        "properties": {}
+      },
+      "CreateSafraDto": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "example": "Safra de Soja 2025",
+            "description": "Nome da safra"
+          },
+          "ano": {
+            "type": "number",
+            "example": 2025,
+            "description": "Ano da safra"
+          },
+          "propriedadeId": {
+            "type": "string",
+            "example": "a8eb2f5c-24a9-459a-8c34-0d618efdb418",
+            "description": "ID da propriedade vinculada à safra"
+          }
+        },
+        "required": [
+          "nome",
+          "ano",
+          "propriedadeId"
+        ]
+      },
+      "Safra": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  }
+}
