@@ -53,3 +53,11 @@ Isso vai iniciar a API e o Banco
 A especificação OpenAPI está disponível diretamente no projeto:
 
 - [OpenAPI](http://localhost:3000/docs)
+
+## 🧪 Testes
+
+Para executar a suíte de testes, utilize o comando:
+
+```bash
+npm run test
+
